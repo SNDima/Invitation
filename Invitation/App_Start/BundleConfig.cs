@@ -28,6 +28,9 @@ namespace Invitation
                       "~/Content/site.css",
                       "~/Content/w3.css",
                       "~/Content/css.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/main").Include(
+                        "~/Scripts/main.js"));
         }
     }
 }

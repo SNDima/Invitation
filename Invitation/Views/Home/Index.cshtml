@@ -2,8 +2,25 @@
     ViewBag.Title = "Hello!";
 }
 
+@section scripts {
+    @Scripts.Render("~/bundles/main")
+}
+
 <div class="w3-display-middle">
-    <h1 class="w3-jumbo w3-animate-top">HELLO!</h1>
+    <h1 id="hello" class="w3-jumbo w3-animate-top">HELLO!</h1>
+    <div id="are-you-sure" style="display: none">
+        <h1 class="w3-jumbo w3-animate-top">Are you Vera?</h1>
+        <div class="btn-group" role="group" style="width: 100%; padding-top: 20px;">
+            <button id="yes-button" type="button" class="btn btn-success custom-success-button">Yes</button>
+            <button id="no-button" type="button" class="btn btn-danger custom-success-button">No</button>
+        </div>
+    </div>
+    <h1 id="no-result" class="w3-jumbo w3-animate-top" style="display: none; text-align: center">Sorry, cannot help you. Goodbye!</h1>
+    <h1 id="yes-result" class="w3-jumbo w3-animate-top" style="display: none; text-align: center">Now we'll check whether you're really Vera :)</h1>
+    <h1 id="3" class="w3-jumbo w3-animate-top" style="display: none">3</h1>
+    <h1 id="2" class="w3-jumbo w3-animate-top" style="display: none">2</h1>
+    <h1 id="1" class="w3-jumbo w3-animate-top" style="display: none">1</h1>
+    <h1 id="go" class="w3-jumbo w3-animate-top" style="display: none">GO!</h1>
 </div>
 
 <div class="w3-display-bottomleft w3-padding-large">
