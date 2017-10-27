@@ -25,7 +25,9 @@ namespace Invitation
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/w3.css",
+                      "~/Content/css.css"));
         }
     }
 }
