@@ -8,6 +8,7 @@ namespace Repositories
     {
         public int Id { get; set; }
         public string Str { get; set; }
+        public int InitialTimeToAnswer { get; set; }
         public int TimeToAnswer { get; set; }
         public string RightAnswer { get; set; }
         public Dictionary<string,string> CustomMessagesToAnswers { get; set; }
@@ -38,6 +39,7 @@ namespace Repositories
             {
                 Id = 1,
                 Str = "To varify yourself please type the last word from your VK status",
+                InitialTimeToAnswer = 30,
                 TimeToAnswer = 30,
                 RightAnswer = "свет",
                 CustomMessagesToAnswers = new Dictionary<string, string>()
@@ -52,6 +54,7 @@ namespace Repositories
                 Str = "It seems that you like Placebo band... Hmmm... I like one song which has next words "
                 + "'And when I get drunk, you take me home. And keep me safe from harm...' "
                 + "But I've forgotten the song name. Maybe you can remind me it?",
+                InitialTimeToAnswer = 45,
                 TimeToAnswer = 45,
                 RightAnswer = "bosco",
                 CustomMessagesToAnswers = new Dictionary<string, string>()
@@ -60,7 +63,19 @@ namespace Repositories
 
         private static Status Status = Status.Initial;
 
-        public static int Timer = 300; // 5 minutes
+        public const int TimerValue = 300; // 5 minutes
+        public static int Timer = TimerValue; 
+
+        public static void Reinit()
+        {
+            Status = Status.Initial;
+            foreach (var question in Questions)
+            {
+                question.IsTaken = false;
+                question.TimeToAnswer = question.InitialTimeToAnswer;
+            }
+            Timer = TimerValue;
+        }
 
         public static Question GetQuestion()
         {

@@ -67,5 +67,10 @@ namespace Services
         {
             StaticRepository.Timer = time;
         }
+
+        public void Flush()
+        {
+            StaticRepository.Reinit();
+        }
     }
 }

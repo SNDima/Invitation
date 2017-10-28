@@ -61,5 +61,12 @@ namespace Invitation.Controllers
         {
             return Json(_questionsService.AnswerQuestion(id, answer));
         }
+
+        [HttpGet]
+        public ActionResult Flush()
+        {
+            _questionsService.Flush();
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
     }
 }
