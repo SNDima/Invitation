@@ -205,6 +205,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\QuestionPartial.cshtml" />
     <Content Include="Views\Home\ChoicePartial.cshtml" />
+    <Content Include="Views\Home\KinosmenaContent.cshtml" />
+    <Content Include="Views\Home\JungleContent.cshtml" />
+    <Content Include="Views\Home\JigsawContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

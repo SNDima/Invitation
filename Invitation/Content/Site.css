@@ -42,3 +42,21 @@ textarea {
 .submit:active {
     background-color: #bbb;
 }
+
+.bottom-active {
+    color: #00ced1;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: transparent;
+    color: #00ced1;
+    font-weight: bold;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid white;
+}
+
+.custom-overflow {
+    max-height: 420px;
+    overflow-y: auto;
+}

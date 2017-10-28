@@ -1,6 +1,6 @@
 ﻿<div id="choice-partial" style="display: none;">
     <h1 class="w3-jumbo w3-animate-top" style="text-align: center; font-size: 25px !important;">
-        I invite you to 1 of these cinemas and hope you'll accept my invitation...
+        I invite you to 1 of these movies and hope you'll accept my invitation...
     </h1>
     <ul class="nav nav-tabs nav-justified" style="padding-top: 20px">
         <li data-bind="click: selectMovie('kinosmena')" id="kinosmena-li" role="presentation" class="active"><a href="#">Kinosmena</a></li>
@@ -9,6 +9,7 @@
     </ul>
     <!-- ko if: currentTab() == "kinosmena" -->
     <div id="kinosmena">
+        <!-- ko if: currentBottomTab() == "photos" -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -37,10 +38,17 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
+        <!-- /ko -->
+        <!-- ko if: currentBottomTab() == "content" -->
+        <div class="carousel slide custom-overflow">
+            @Html.Partial("KinosmenaContent")
+        </div>
+        <!-- /ko -->
     </div>
     <!-- /ko -->
     <!-- ko if: currentTab() == "jungle" -->
     <div id="jungle">
+        <!-- ko if: currentBottomTab() == "photos" -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -74,10 +82,17 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
+        <!-- /ko -->
+        <!-- ko if: currentBottomTab() == "content" -->
+        <div class="carousel slide custom-overflow">
+            @Html.Partial("JungleContent")
+        </div>
+        <!-- /ko -->
     </div>
     <!-- /ko -->
     <!-- ko if: currentTab() == "jigsaw" -->
     <div id="jigsaw">
+        <!-- ko if: currentBottomTab() == "photos" -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -111,6 +126,20 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
+        <!-- /ko -->
+        <!-- ko if: currentBottomTab() == "content" -->
+        <div class="carousel slide custom-overflow">
+            @Html.Partial("JigsawContent")
+        </div>
+        <!-- /ko -->
     </div>
     <!-- /ko -->
+    <ul class="nav nav-tabs nav-justified">
+        <li data-bind="click: selectBottomTab('photos')" id="photos-li" role="presentation">
+            <a id="photos-a" href="#">Photos</a>
+        </li>
+        <li data-bind="click: selectBottomTab('content')" id="content-li" role="presentation">
+            <a id="content-a" href="#">Content</a>
+        </li>
+    </ul>
 </div>

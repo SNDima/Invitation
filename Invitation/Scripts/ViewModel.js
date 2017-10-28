@@ -13,6 +13,7 @@
     self.status = ko.observable(STATUSES.INITIAL);
 
     self.currentTab = ko.observable("kinosmena");
+    self.currentBottomTab = ko.observable("photos");
 
     self.init = function (start, noQuestions) {
         self.getStatus(start, noQuestions);
@@ -108,6 +109,14 @@
             $("#" + self.currentTab() + "-li").removeClass("active");
             $("#" + next + "-li").addClass("active");
             self.currentTab(next);
+        }
+    }
+
+    self.selectBottomTab = function (tab) {
+        if (self.currentBottomTab() != tab) {
+            $("#" + self.currentBottomTab() + "-a").removeClass("bottom-active");
+            $("#" + tab + "-a").addClass("bottom-active");
+            self.currentBottomTab(tab);
         }
     }
 }
