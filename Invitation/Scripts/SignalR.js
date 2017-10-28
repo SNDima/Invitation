@@ -5,9 +5,10 @@
     timer.client.showTime = function (time) {
         if (time == 0) {
             $("#timer-message").text("Another attempt in " + time + " seconds.")
-            setTimeout(function() {
-                viewModel.init(start, noQuestions);
-            }, 1000)
+            setTimeout(function () {
+                viewModel.setStatus(STATUSES.YES_SELECTED);
+                viewModel.updateQuestion(noQuestions);
+            }, 1500)
         } else {
             $("#timer-message").text("Another attempt in " + time + " seconds.")
         }

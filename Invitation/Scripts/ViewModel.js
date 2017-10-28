@@ -30,6 +30,20 @@
             });
     };
 
+    self.updateQuestion = function (noQuestions) {
+        $.get(self.actions.GetQuestion)
+            .done(function (res) {
+                if (res.Id != 0) {
+                    self.question.id(res.Id);
+                    self.question.str(res.Str);
+                    self.question.time(res.TimeToAnswer);
+                    processQuestion();
+                } else {
+                    noQuestions();
+                }
+            });
+    };
+
     self.getStatus = function (start, noQuestions) {
         $.get(self.actions.GetStatus)
             .done(function (res) {
@@ -61,8 +75,9 @@
         self.answerQuestion(showChoices, showFailMessage);
     }
 
-    self.answerQuestion = function(success, fail) {
-        $.post(self.actions.AnswerQuestion,
+    self.answerQuestion = function (success, fail) {
+        if (self.question.time() > 0) {
+            $.post(self.actions.AnswerQuestion,
             {
                 id: self.question.id(),
                 answer: self.question.answer()
@@ -75,6 +90,7 @@
                     fail(res.Message)
                 }
             });
+        }
     }
 
     self.onEnter = function (d, e) {

@@ -58,6 +58,9 @@ $("#no-ready-button").click(function () {
 
 function processQuestion() {
     $("#go").hide();
+    $("#fail-message").hide();
+    $("#timer-message").hide();
+    enable();
     $("#question-partial").show();
     runTimer(viewModel.question.time());
 }
@@ -102,7 +105,10 @@ function showTimerMessage() {
 function runTimer(secondsLeft) {
     $("#timer").text("The time left to answer: " + secondsLeft + "s");
 
-    var timer = setInterval(function (){
+    var timer = setInterval(function () {
+        if (viewModel.status() == STATUSES.ANSWERED) {
+            stopTimer();
+        }
         $("#timer").text("The time left to answer: " + secondsLeft + "s");
         if (secondsLeft == 0) {
             $("#timer").text("The time is over");
@@ -123,8 +129,13 @@ function runTimer(secondsLeft) {
 }
 
 function disable() {
-    $("#answer-input").attr("disabled", "disabled");
-    $("#answer-button").attr("disabled", "disabled");
+    $("#answer-input").attr("disabled", true);
+    $("#answer-button").attr("disabled", true);
+}
+
+function enable() {
+    $("#answer-input").attr("disabled", false);
+    $("#answer-button").attr("disabled", false);
 }
 
 function process3() {
@@ -152,5 +163,6 @@ function processGo() {
 }
 
 function noQuestions() {
+    $("#timer-message").hide();
     $("#no-questions").show();
 }
