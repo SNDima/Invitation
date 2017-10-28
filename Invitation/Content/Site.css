@@ -27,3 +27,18 @@ textarea {
     width: 50%;
     background-color: transparent;
 }
+
+.submit {
+    width: 80px;
+    color: #666;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #ccc;
+}
+
+.submit:active {
+    background-color: #bbb;
+}

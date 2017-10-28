@@ -20,6 +20,26 @@ $("#no-button").click(function () {
 
 function processQuestion() {
     $("#go").hide();
+    $("#question-partial").show();
+    runTimer();
+}
+
+function runTimer() {
+    var secondsLeft = 20;
+    $("#timer").text("The time left to answer: " + secondsLeft + "s");
+
+    var timer = setInterval(function (){
+        $("#timer").text("The time left to answer: " + secondsLeft + "s");
+        if (secondsLeft == 0) {
+            $("#timer").text("The time is over");
+            stopTimer();
+        }
+        secondsLeft--;
+    }, 1000);
+
+    function stopTimer() {
+        window.clearInterval(timer)
+    }
 }
 
 function process3() {
