@@ -7,12 +7,13 @@
     <script>
         var actions = @Html.Raw(Json.Encode(ViewBag.Actions));
         var viewModel = new ViewModel(actions);
+        viewModel.init(start);
         ko.applyBindings(viewModel);
     </script>
 }
 
 <div class="w3-display-middle">
-    <h1 id="hello" class="w3-jumbo w3-animate-top">HELLO!</h1>
+    <h1 id="hello" class="w3-jumbo w3-animate-top" style="display: none">HELLO!</h1>
     <div id="are-you-sure" style="display: none">
         <h1 class="w3-jumbo w3-animate-top">Are you Vera?</h1>
         <div class="btn-group" role="group" style="width: 100%; padding-top: 20px;">

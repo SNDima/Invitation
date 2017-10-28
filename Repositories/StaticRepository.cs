@@ -11,9 +11,16 @@ namespace Repositories
         public bool IsTaken { get; set; }
     }
 
+    public enum Status
+    {
+        Initial = 1,
+        HelloShown = 2,
+        YesSelected = 3
+    }
+
     public static class StaticRepository
     {
-        public static Question[] Questions = new Question[]
+        private static Question[] Questions = new Question[]
         {
             new Question()
             {
@@ -28,6 +35,8 @@ namespace Repositories
             }
         };
 
+        private static Status Status = Status.Initial;
+
         public static Question GetQuestion()
         {
             foreach (var question in Questions)
@@ -38,6 +47,16 @@ namespace Repositories
                 }
             }
             return null;
+        }
+
+        public static int GetStatus()
+        {
+            return (int)Status;
+        }
+
+        public static void SetStatus(int status)
+        {
+            Status = (Status)status;
         }
     }
 }

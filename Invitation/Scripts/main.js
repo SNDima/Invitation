@@ -1,13 +1,26 @@
-﻿$(function () {
-    setTimeout(showFirstQuestion, 2000);
-});
+﻿function start() {
+    if (viewModel.status() == STATUSES.INITIAL) {
+        $("#hello").show();
+        setTimeout(showFirstQuestion, 2000);
+    }
+    if (viewModel.status() == STATUSES.HELLO_SHOWN) {
+        showFirstQuestion();
+    }
+    if (viewModel.status() == STATUSES.YES_SELECTED) {
+        processQuestion();
+    }
+}
 
 function showFirstQuestion() {
+    if (viewModel.status() != STATUSES.HELLO_SHOWN) {
+        viewModel.setStatus(STATUSES.HELLO_SHOWN);
+    }
     $("#hello").hide();
     $("#are-you-sure").show();
 }
 
 $("#yes-button").click(function () {
+    viewModel.setStatus(STATUSES.YES_SELECTED);
     $("#are-you-sure").hide();
     $("#yes-result").show();
     setTimeout(process3, 3000);

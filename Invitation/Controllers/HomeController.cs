@@ -1,4 +1,5 @@
-﻿using Services;
+﻿using System.Net;
+using Services;
 
 namespace Invitation.Controllers
 {
@@ -17,7 +18,9 @@ namespace Invitation.Controllers
         {
             ViewBag.Actions = new
             {
-                GetQuestion = Url.Action("GetQuestion")
+                GetQuestion = Url.Action("GetQuestion"),
+                GetStatus = Url.Action("GetStatus"),
+                SetStatus = Url.Action("SetStatus")
             };
             return View();
         }
@@ -25,6 +28,18 @@ namespace Invitation.Controllers
         public ActionResult GetQuestion()
         {
             return Json(_questionsService.GetQuestion(), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetStatus()
+        {
+            return Json(new {Status = _questionsService.GetStatus()}, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult SetStatus(int status)
+        {
+            _questionsService.SetStatus(status);
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }

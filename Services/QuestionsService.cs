@@ -20,5 +20,15 @@ namespace Services
                 TimeToAnswer = question.TimeToAnswer
             };
         }
+
+        public int GetStatus()
+        {
+            return StaticRepository.GetStatus();
+        }
+
+        public void SetStatus(int status)
+        {
+            StaticRepository.SetStatus(status);
+        }
     }
 }
