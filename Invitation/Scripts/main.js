@@ -12,6 +12,12 @@
     if (viewModel.status() == STATUSES.ANSWERED) {
         showChoicePartial();
     }
+    if (viewModel.status() == STATUSES.WAITING) {
+        showTimerMessage();
+    }
+    if (viewModel.status() == STATUSES.BEFORE_READY) {
+        showReadyGroup();
+    }
 }
 
 function showFirstQuestion() {
@@ -22,6 +28,11 @@ function showFirstQuestion() {
     $("#are-you-sure").show();
 }
 
+function showReadyGroup() {
+    $("#timer-message").hide();
+    $("#are-you-ready").show();
+}
+
 $("#yes-button").click(function () {
     viewModel.setStatus(STATUSES.YES_SELECTED);
     $("#are-you-sure").hide();
@@ -29,8 +40,19 @@ $("#yes-button").click(function () {
     setTimeout(process3, 3000);
 });
 
+$("#yes-ready-button").click(function () {
+    viewModel.setStatus(STATUSES.YES_SELECTED);
+    $("#are-you-ready").hide();
+    process3();
+});
+
 $("#no-button").click(function () {
     $("#are-you-sure").hide();
+    $("#no-result").show();
+});
+
+$("#no-ready-button").click(function () {
+    $("#are-you-ready").hide();
     $("#no-result").show();
 });
 
@@ -63,6 +85,20 @@ function hideFailMessage() {
     $("#fail-message").hide();
 }
 
+function showRelaxMessage() {
+    $("#question-partial").hide();
+    $("#relax-message").show();
+    setTimeout(function () {
+        $("#relax-message").hide();
+        startTimer();
+        showTimerMessage();
+    }, 3000);
+}
+
+function showTimerMessage() {
+    $("#timer-message").show();
+}
+
 function runTimer(secondsLeft) {
     $("#timer").text("The time left to answer: " + secondsLeft + "s");
 
@@ -71,6 +107,8 @@ function runTimer(secondsLeft) {
         if (secondsLeft == 0) {
             $("#timer").text("The time is over");
             stopTimer();
+            disable();
+            setTimeout(showRelaxMessage, 2000);
         }
         secondsLeft--;
         if (secondsLeft >= 0) {
@@ -82,6 +120,11 @@ function runTimer(secondsLeft) {
     function stopTimer() {
         window.clearInterval(timer)
     }
+}
+
+function disable() {
+    $("#answer-input").attr("disabled", "disabled");
+    $("#answer-button").attr("disabled", "disabled");
 }
 
 function process3() {

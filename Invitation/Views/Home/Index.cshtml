@@ -29,6 +29,15 @@
     <h1 id="go" class="w3-jumbo w3-animate-top" style="display: none">GO!</h1>
     <h1 id="no-questions" class="w3-jumbo w3-animate-top" style="display: none; text-align: center">Sorry... I have no questions anymore :(</h1>
     <h1 id="success-message" class="w3-jumbo w3-animate-top" style="display: none; text-align: center"></h1>
+    <h1 id="relax-message" class="w3-jumbo w3-animate-top" style="display: none; text-align: center">Oops! Just relax a little bit and try again.</h1>
+    <h1 id="timer-message" class="w3-jumbo w3-animate-top" style="display: none; text-align: center"></h1>
+    <div id="are-you-ready" style="display: none; max-width: 500px;">
+        <h1 class="w3-jumbo w3-animate-top" style="text-align: center">Are you ready to contonue?</h1>
+        <div class="btn-group" role="group" style="width: 100%; padding-top: 20px;">
+            <button id="yes-ready-button" type="button" class="btn btn-success custom-success-button">Yes</button>
+            <button id="no-ready-button" type="button" class="btn btn-danger custom-success-button">No</button>
+        </div>
+    </div>
     @Html.Partial("QuestionPartial")
     @Html.Partial("ChoicePartial")
 </div>

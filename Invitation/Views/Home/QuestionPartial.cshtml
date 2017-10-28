@@ -5,9 +5,9 @@
     <div class="input-group" style="padding-top: 20px; margin: auto; text-align: center;">
         <label id="fail-message" style="display: none; color: #D33; max-width: 380px; font-weight: normal;"></label>
         <div class="input-group">
-            <input data-bind="value: question.answer, valueUpdate: 'input', event: {keypress: onEnter}"
+            <input id="answer-input" data-bind="value: question.answer, valueUpdate: 'input', event: {keypress: onEnter}"
                    type="text" class="form-control" placeholder="Type the answer..." style="width: 300px;">
-            <span data-bind="click: answerQuestionExecuter" class="input-group-addon submit">Submin</span>
+            <span id="answer-button" data-bind="click: answerQuestionExecuter" class="input-group-addon submit">Submin</span>
         </div>
     </div>
     <p id="timer" style="text-align: center"></p>

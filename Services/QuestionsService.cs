@@ -57,5 +57,15 @@ namespace Services
                 Message = result.Message
             };
         }
+
+        public int GetTimer()
+        {
+            return StaticRepository.Timer;
+        }
+
+        public void SetTimer(int time)
+        {
+            StaticRepository.Timer = time;
+        }
     }
 }

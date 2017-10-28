@@ -32,10 +32,14 @@ namespace Invitation
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                         "~/Scripts/knockout-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/signalR").Include(
+                        "~/Scripts/jquery.signalR-{version}.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/main").Include(
                         "~/Scripts/main.js",
                         "~/Scripts/ViewModel.js",
-                        "~/Scripts/Statuses.js"));
+                        "~/Scripts/Statuses.js",
+                        "~/Scripts/SignalR.js"));
         }
     }
 }

@@ -25,7 +25,9 @@ namespace Repositories
         Initial = 1,
         HelloShown = 2,
         YesSelected = 3,
-        Answered = 4
+        Answered = 4,
+        Waiting = 5,
+        BeforeReady = 6
     }
 
     public static class StaticRepository
@@ -58,6 +60,8 @@ namespace Repositories
 
         private static Status Status = Status.Initial;
 
+        public static int Timer = 300; // 5 minutes
+
         public static Question GetQuestion()
         {
             foreach (var question in Questions)
@@ -86,6 +90,7 @@ namespace Repositories
             question.TimeToAnswer = time;
             if (time == 0)
             {
+                Status = Status.Waiting;
                 question.IsTaken = true;
             }
         }

@@ -29,7 +29,10 @@
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/knockout")
+@Scripts.Render("~/bundles/signalR")
 @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)
+<script src="signalr/hubs"></script>
+
 </body>
 </html>
