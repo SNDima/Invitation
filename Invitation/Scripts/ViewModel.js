@@ -119,4 +119,12 @@
             self.currentBottomTab(tab);
         }
     }
+
+    self.useLink = function() {
+        processLink();
+    }
+
+    self.useAnotherLink = function () {
+        showChoicePartial();
+    }
 }

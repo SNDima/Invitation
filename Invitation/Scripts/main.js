@@ -78,6 +78,7 @@ function showChoices(message) {
 function showChoicePartial() {
     viewModel.selectMovie("kinosmena");
     viewModel.selectBottomTab("photos");
+    $("#decision-partial").hide();
     $("#choice-partial").show();
 }
 
@@ -167,4 +168,9 @@ function processGo() {
 function noQuestions() {
     $("#timer-message").hide();
     $("#no-questions").show();
+}
+
+function processLink() {
+    $("#choice-partial").hide();
+    $("#decision-partial").show();
 }

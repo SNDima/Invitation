@@ -208,6 +208,7 @@
     <Content Include="Views\Home\KinosmenaContent.cshtml" />
     <Content Include="Views\Home\JungleContent.cshtml" />
     <Content Include="Views\Home\JigsawContent.cshtml" />
+    <Content Include="Views\Home\DecisionPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
