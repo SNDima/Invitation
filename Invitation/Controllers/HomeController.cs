@@ -15,12 +15,16 @@ namespace Invitation.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Actions = new
+            {
+                GetQuestion = Url.Action("GetQuestion")
+            };
             return View();
         }
 
         public ActionResult GetQuestion()
         {
-            return Json(_questionsService.GetQuestion());
+            return Json(_questionsService.GetQuestion(), JsonRequestBehavior.AllowGet);
         }
     }
 }

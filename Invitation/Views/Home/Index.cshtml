@@ -4,6 +4,11 @@
 
 @section scripts {
     @Scripts.Render("~/bundles/main")
+    <script>
+        var actions = @Html.Raw(Json.Encode(ViewBag.Actions));
+        var viewModel = new ViewModel(actions);
+        ko.applyBindings(viewModel);
+    </script>
 }
 
 <div class="w3-display-middle">

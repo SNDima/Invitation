@@ -20,12 +20,10 @@ $("#no-button").click(function () {
 
 function processQuestion() {
     $("#go").hide();
-    $("#question-partial").show();
-    runTimer();
+    viewModel.getQuestion();
 }
 
-function runTimer() {
-    var secondsLeft = 20;
+function runTimer(secondsLeft) {
     $("#timer").text("The time left to answer: " + secondsLeft + "s");
 
     var timer = setInterval(function (){
@@ -35,6 +33,7 @@ function runTimer() {
             stopTimer();
         }
         secondsLeft--;
+        viewModel.question.time(secondsLeft);
     }, 1000);
 
     function stopTimer() {

@@ -29,8 +29,12 @@ namespace Invitation
                       "~/Content/w3.css",
                       "~/Content/css.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+                        "~/Scripts/knockout-{version}.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/main").Include(
-                        "~/Scripts/main.js"));
+                        "~/Scripts/main.js",
+                        "~/Scripts/ViewModel.js"));
         }
     }
 }
