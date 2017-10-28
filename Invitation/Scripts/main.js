@@ -76,6 +76,7 @@ function showChoices(message) {
 }
 
 function showChoicePartial() {
+    viewModel.selectMovie("kinosmena");
     $("#choice-partial").show();
 }
 

@@ -12,6 +12,8 @@
 
     self.status = ko.observable(STATUSES.INITIAL);
 
+    self.currentTab = ko.observable("kinosmena");
+
     self.init = function (start, noQuestions) {
         self.getStatus(start, noQuestions);
     }
@@ -100,4 +102,12 @@
         };
         return true;
     };
+
+    self.selectMovie = function(next) {
+        if (self.currentTab() != next) {
+            $("#" + self.currentTab() + "-li").removeClass("active");
+            $("#" + next + "-li").addClass("active");
+            self.currentTab(next);
+        }
+    }
 }
