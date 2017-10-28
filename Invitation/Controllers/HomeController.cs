@@ -21,7 +21,8 @@ namespace Invitation.Controllers
                 GetQuestion = Url.Action("GetQuestion"),
                 GetStatus = Url.Action("GetStatus"),
                 SetStatus = Url.Action("SetStatus"),
-                SetQuestionTime = Url.Action("SetQuestionTime")
+                SetQuestionTime = Url.Action("SetQuestionTime"),
+                AnswerQuestion = Url.Action("AnswerQuestion")
             };
             return View();
         }
@@ -53,6 +54,12 @@ namespace Invitation.Controllers
         {
             _questionsService.SetQuestionTime(id, time);
             return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        [HttpPost]
+        public ActionResult AnswerQuestion(int id, string answer)
+        {
+            return Json(_questionsService.AnswerQuestion(id, answer));
         }
     }
 }

@@ -9,6 +9,9 @@
     if (viewModel.status() == STATUSES.YES_SELECTED) {
         processQuestion();
     }
+    if (viewModel.status() == STATUSES.ANSWERED) {
+        showChoicePartial();
+    }
 }
 
 function showFirstQuestion() {
@@ -35,6 +38,29 @@ function processQuestion() {
     $("#go").hide();
     $("#question-partial").show();
     runTimer(viewModel.question.time());
+}
+
+function showChoices(message) {
+    $("#question-partial").hide();
+    $("#success-message").text(message);
+    $("#success-message").show();
+    setTimeout(function () {
+        $("#success-message").hide();
+        showChoicePartial();
+    }, 3000);
+}
+
+function showChoicePartial() {
+    $("#choice-partial").show();
+}
+
+function showFailMessage(message) {
+    $("#fail-message").text(message);
+    $("#fail-message").show();
+}
+
+function hideFailMessage() {
+    $("#fail-message").hide();
 }
 
 function runTimer(secondsLeft) {

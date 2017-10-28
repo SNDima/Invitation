@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Repositories
@@ -13,11 +14,18 @@ namespace Repositories
         public bool IsTaken { get; set; }
     }
 
+    public class AnswerResult
+    {
+        public bool Succeeded { get; set; }
+        public string Message { get; set; }
+    }
+
     public enum Status
     {
         Initial = 1,
         HelloShown = 2,
-        YesSelected = 3
+        YesSelected = 3,
+        Answered = 4
     }
 
     public static class StaticRepository
@@ -79,6 +87,36 @@ namespace Repositories
             if (time == 0)
             {
                 question.IsTaken = true;
+            }
+        }
+
+        public static AnswerResult AnswerQuestion(int id, string answer)
+        {
+            var question = Questions.FirstOrDefault(q => q.Id == id);
+            if (answer != null && answer.ToLower().Trim() == question.RightAnswer)
+            {
+                Status = Status.Answered;
+                return new AnswerResult
+                {
+                    Succeeded = true,
+                    Message = "Great job! Hello, Vera :)"
+                };
+            }
+            else if (answer != null && question.CustomMessagesToAnswers.ContainsKey(answer.ToLower().Trim()))
+            {
+                return new AnswerResult
+                {
+                    Succeeded = false,
+                    Message = question.CustomMessagesToAnswers[answer.ToLower().Trim()]
+                };
+            }
+            else
+            {
+                return new AnswerResult
+                {
+                    Succeeded = false,
+                    Message = "Wrong answer. Please try again."
+                };
             }
         }
     }

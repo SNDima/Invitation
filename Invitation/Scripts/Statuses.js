@@ -1,5 +1,6 @@
 ﻿var STATUSES = {
     INITIAL: 1,
     HELLO_SHOWN: 2,
-    YES_SELECTED: 3
+    YES_SELECTED: 3,
+    ANSWERED: 4
 };

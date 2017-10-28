@@ -7,12 +7,13 @@
         id: ko.observable(0),
         str: ko.observable(""),
         time: ko.observable(0),
+        answer: ko.observable("")
     }
 
     self.status = ko.observable(STATUSES.INITIAL);
 
     self.init = function (start, noQuestions) {
-        self.getQuestion(start, noQuestions);
+        self.getStatus(start, noQuestions);
     }
 
     self.getQuestion = function(start, noQuestions) {
@@ -22,19 +23,21 @@
                     self.question.id(res.Id);
                     self.question.str(res.Str);
                     self.question.time(res.TimeToAnswer);
-                    self.getStatus(start);
+                    start();
                 } else {
                     noQuestions();
                 }
             });
     };
 
-    self.getStatus = function(start) {
+    self.getStatus = function (start, noQuestions) {
         $.get(self.actions.GetStatus)
             .done(function (res) {
                 self.status(res.Status);
-                if (start) {
+                if (self.status() == STATUSES.ANSWERED) {
                     start();
+                } else {
+                    self.getQuestion(start, noQuestions)
                 }
             });
     };
@@ -53,4 +56,32 @@
                 time: self.question.time()
             });
     }
+
+    self.answerQuestionExecuter = function() {
+        self.answerQuestion(showChoices, showFailMessage);
+    }
+
+    self.answerQuestion = function(success, fail) {
+        $.post(self.actions.AnswerQuestion,
+            {
+                id: self.question.id(),
+                answer: self.question.answer()
+            })
+            .done(function (res) {
+                if (res.Succeeded) {
+                    self.status(STATUSES.ANSWERED);
+                    success(res.Message)
+                } else {
+                    fail(res.Message)
+                }
+            });
+    }
+
+    self.onEnter = function (d, e) {
+        hideFailMessage();
+        if (e.keyCode === 13) {
+            self.answerQuestionExecuter();
+        };
+        return true;
+    };
 }

@@ -10,6 +10,12 @@ namespace Services
         public int TimeToAnswer { get; set; }
     }
 
+    public class AnswerResult
+    {
+        public bool Succeeded { get; set; }
+        public string Message { get; set; }
+    }
+
     public class QuestionsService
     {
         public Question GetQuestion()
@@ -40,6 +46,16 @@ namespace Services
         public void SetQuestionTime(int id, int time)
         {
             StaticRepository.SetQuestionTime(id, time);
+        }
+
+        public AnswerResult AnswerQuestion(int id, string answer)
+        {
+            var result = StaticRepository.AnswerQuestion(id, answer);
+            return new AnswerResult
+            {
+                Succeeded = result.Succeeded,
+                Message = result.Message
+            };
         }
     }
 }
