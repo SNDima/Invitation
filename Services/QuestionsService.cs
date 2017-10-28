@@ -5,6 +5,7 @@ namespace Services
 {
     public class Question
     {
+        public int Id { get; set; }
         public string Str { get; set; }
         public int TimeToAnswer { get; set; }
     }
@@ -14,8 +15,13 @@ namespace Services
         public Question GetQuestion()
         {
             var question = StaticRepository.GetQuestion();
+            if (question == null)
+            {
+                return null;
+            }
             return new Question()
             {
+                Id = question.Id,
                 Str = question.Str,
                 TimeToAnswer = question.TimeToAnswer
             };
@@ -29,6 +35,11 @@ namespace Services
         public void SetStatus(int status)
         {
             StaticRepository.SetStatus(status);
+        }
+
+        public void SetQuestionTime(int id, int time)
+        {
+            StaticRepository.SetQuestionTime(id, time);
         }
     }
 }

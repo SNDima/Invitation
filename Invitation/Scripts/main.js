@@ -33,7 +33,8 @@ $("#no-button").click(function () {
 
 function processQuestion() {
     $("#go").hide();
-    viewModel.getQuestion();
+    $("#question-partial").show();
+    runTimer(viewModel.question.time());
 }
 
 function runTimer(secondsLeft) {
@@ -46,7 +47,10 @@ function runTimer(secondsLeft) {
             stopTimer();
         }
         secondsLeft--;
-        viewModel.question.time(secondsLeft);
+        if (secondsLeft >= 0) {
+            viewModel.question.time(secondsLeft);
+            viewModel.setQuestionTime();
+        }
     }, 1000);
 
     function stopTimer() {
@@ -76,4 +80,8 @@ function processGo() {
     $("#1").hide();
     $("#go").show();
     setTimeout(processQuestion, 1000);
+}
+
+function noQuestions() {
+    $("#no-questions").show();
 }

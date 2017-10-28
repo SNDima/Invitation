@@ -7,7 +7,7 @@
     <script>
         var actions = @Html.Raw(Json.Encode(ViewBag.Actions));
         var viewModel = new ViewModel(actions);
-        viewModel.init(start);
+        viewModel.init(start, noQuestions);
         ko.applyBindings(viewModel);
     </script>
 }
@@ -27,6 +27,7 @@
     <h1 id="2" class="w3-jumbo w3-animate-top" style="display: none">2</h1>
     <h1 id="1" class="w3-jumbo w3-animate-top" style="display: none">1</h1>
     <h1 id="go" class="w3-jumbo w3-animate-top" style="display: none">GO!</h1>
+    <h1 id="no-questions" class="w3-jumbo w3-animate-top" style="display: none; text-align: center">Sorry... I have no questions anymore :(</h1>
     @Html.Partial("QuestionPartial")
 </div>
 
