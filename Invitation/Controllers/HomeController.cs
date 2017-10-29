@@ -22,7 +22,8 @@ namespace Invitation.Controllers
                 GetStatus = Url.Action("GetStatus"),
                 SetStatus = Url.Action("SetStatus"),
                 SetQuestionTime = Url.Action("SetQuestionTime"),
-                AnswerQuestion = Url.Action("AnswerQuestion")
+                AnswerQuestion = Url.Action("AnswerQuestion"),
+                MakeDecision = Url.Action("MakeDecision")
             };
             return View();
         }
@@ -66,6 +67,13 @@ namespace Invitation.Controllers
         public ActionResult Flush()
         {
             _questionsService.Flush();
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        [HttpPost]
+        public ActionResult MakeDecision(string decision)
+        {
+            _questionsService.MakeDecision(decision);
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }

@@ -28,7 +28,8 @@ namespace Repositories
         YesSelected = 3,
         Answered = 4,
         Waiting = 5,
-        BeforeReady = 6
+        BeforeReady = 6,
+        AfterDecision = 7
     }
 
     public static class StaticRepository
@@ -64,7 +65,9 @@ namespace Repositories
         private static Status Status = Status.Initial;
 
         public const int TimerValue = 300; // 5 minutes
-        public static int Timer = TimerValue; 
+        public static int Timer = TimerValue;
+
+        private static string Decision;
 
         public static void Reinit()
         {
@@ -138,6 +141,12 @@ namespace Repositories
                     Message = "Wrong answer. Please try again."
                 };
             }
+        }
+
+        public static void MakeDecision(string decision)
+        {
+            Decision = decision;
+            Status = Status.AfterDecision;
         }
     }
 }

@@ -51,7 +51,7 @@
         $.get(self.actions.GetStatus)
             .done(function (res) {
                 self.status(res.Status);
-                if (self.status() == STATUSES.ANSWERED) {
+                if (self.status() == STATUSES.ANSWERED || self.status() == STATUSES.AFTER_DECISION) {
                     start();
                 } else {
                     self.getQuestion(start, noQuestions)
@@ -94,6 +94,17 @@
                 }
             });
         }
+    }
+
+    self.makeDecision = function(decision) {
+        $.post(self.actions.MakeDecision,
+            {
+                decision: decision
+            })
+            .done(function(res) {
+                self.status(STATUSES.AFTER_DECISION)
+                goToFinish();
+            });
     }
 
     self.onEnter = function (d, e) {

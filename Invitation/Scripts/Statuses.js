@@ -4,5 +4,6 @@
     YES_SELECTED: 3,
     ANSWERED: 4,
     WAITING: 5,
-    BEFORE_READY: 6
+    BEFORE_READY: 6,
+    AFTER_DECISION: 7
 };

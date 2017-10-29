@@ -18,6 +18,9 @@
     if (viewModel.status() == STATUSES.BEFORE_READY) {
         showReadyGroup();
     }
+    if (viewModel.status() == STATUSES.AFTER_DECISION) {
+        showFinished();
+    }
 }
 
 function showFirstQuestion() {
@@ -173,4 +176,13 @@ function noQuestions() {
 function processLink() {
     $("#choice-partial").hide();
     $("#decision-partial").show();
+}
+
+function goToFinish() {
+    $("#decision-partial").hide();
+    $("#after-decision").show();
+}
+
+function showFinished() {
+    $("#finished").show();
 }

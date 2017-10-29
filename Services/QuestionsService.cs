@@ -72,5 +72,10 @@ namespace Services
         {
             StaticRepository.Reinit();
         }
+
+        public void MakeDecision(string decision)
+        {
+            StaticRepository.MakeDecision(decision);
+        }
     }
 }
