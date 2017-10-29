@@ -45,6 +45,9 @@
             @Html.Partial("KinosmenaContent")
         </div>
         <!-- /ko -->
+        <!-- ko if: currentBottomTab() == "trailer" && isOnDecisionPage() == false -->
+            <iframe class="youtube" src="https://www.youtube.com/embed/b8gofGLqmCw"></iframe>
+        <!-- /ko -->
     </div>
     <!-- /ko -->
     <!-- ko if: currentTab() == "jungle" -->
@@ -88,6 +91,9 @@
         <div class="carousel slide custom-overflow">
             @Html.Partial("JungleContent")
         </div>
+        <!-- /ko -->
+        <!-- ko if: currentBottomTab() == "trailer" && isOnDecisionPage() == false -->
+            <iframe class="youtube" src="https://www.youtube.com/embed/qz3dnrGEPf4"></iframe>
         <!-- /ko -->
     </div>
     <!-- /ko -->
@@ -133,6 +139,9 @@
             @Html.Partial("JigsawContent")
         </div>
         <!-- /ko -->
+        <!-- ko if: currentBottomTab() == "trailer" && isOnDecisionPage() == false -->
+            <iframe class="youtube" src="https://www.youtube.com/embed/bw4Cd4CqFAg"></iframe>
+        <!-- /ko -->
     </div>
     <!-- /ko -->
     <ul class="nav nav-tabs nav-justified">
@@ -141,6 +150,9 @@
         </li>
         <li data-bind="click: selectBottomTab.bind($data, 'content')" id="content-li" role="presentation">
             <a id="content-a" href="#">Content</a>
+        </li>
+        <li data-bind="click: selectBottomTab.bind($data, 'trailer')" id="trailer-li" role="presentation">
+            <a id="trailer-a" href="#">Trailer</a>
         </li>
     </ul>
 </div>

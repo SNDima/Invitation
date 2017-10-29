@@ -15,6 +15,8 @@
     self.currentTab = ko.observable("kinosmena");
     self.currentBottomTab = ko.observable("photos");
 
+    self.isOnDecisionPage = ko.observable(false);
+
     self.init = function (start, noQuestions) {
         self.getStatus(start, noQuestions);
     }
@@ -144,11 +146,13 @@
     }
 
     self.useLink = function () {
+        self.isOnDecisionPage(true);
         sendMessage("Went to the decision page.");
         processLink();
     }
 
     self.useAnotherLink = function () {
+        self.isOnDecisionPage(false);
         sendMessage("Went back to the choices page.");
         showChoicePartial();
     }
