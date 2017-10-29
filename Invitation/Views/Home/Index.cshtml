@@ -13,12 +13,12 @@
 }
 
 <div class="w3-display-middle">
-    <h1 id="hello" class="w3-jumbo w3-animate-top" style="display: none">HELLO!</h1>
+    <h1 id="hello" class="w3-jumbo w3-animate-top" style="display: none; text-align: center">HELLO!</h1>
     <div id="are-you-sure" style="display: none">
-        <h1 class="w3-jumbo w3-animate-top">Are you Vera?</h1>
+        <h1 class="w3-jumbo w3-animate-top" style="text-align: center">Are you Vera?</h1>
         <div class="btn-group" role="group" style="width: 100%; padding-top: 20px;">
             <button id="yes-button" type="button" class="btn btn-success custom-success-button">Yes</button>
-            <button id="no-button" type="button" class="btn btn-danger custom-success-button">No</button>
+            <button id="no-button" type="button" class="btn btn-danger custom-danger-button">No</button>
         </div>
     </div>
     <h1 id="no-result" class="w3-jumbo w3-animate-top" style="display: none; text-align: center">Sorry, cannot help you. Goodbye!</h1>
@@ -31,13 +31,13 @@
     <h1 id="success-message" class="w3-jumbo w3-animate-top" style="display: none; text-align: center"></h1>
     <h1 id="relax-message" class="w3-jumbo w3-animate-top" style="display: none; text-align: center">Oops! Just relax a little bit and try again.</h1>
     <h1 id="timer-message" class="w3-jumbo w3-animate-top" style="display: none; text-align: center"></h1>
-    <h1 id="after-decision" class="w3-jumbo w3-animate-top" style="display: none; text-align: center">Great choice! I hope you liked my little creative work ;) Thanks!</h1>
-    <h1 id="finished" class="w3-jumbo w3-animate-top" style="display: none;">COMING SOON</h1>
+    <h1 id="after-decision" class="w3-jumbo w3-animate-top" style="display: none; text-align: center">Good choice! I hope you liked it was interesting for you ;) Thanks!</h1>
+    <h1 id="finished" class="w3-jumbo w3-animate-top" style="display: none; text-align: center">COMING SOON</h1>
     <div id="are-you-ready" style="display: none; max-width: 500px;">
         <h1 class="w3-jumbo w3-animate-top" style="text-align: center">Are you ready to start?</h1>
         <div class="btn-group" role="group" style="width: 100%; padding-top: 20px;">
             <button id="yes-ready-button" type="button" class="btn btn-success custom-success-button">Yes</button>
-            <button id="no-ready-button" type="button" class="btn btn-danger custom-success-button">No</button>
+            <button id="no-ready-button" type="button" class="btn btn-danger custom-danger-button">No</button>
         </div>
     </div>
     @Html.Partial("QuestionPartial")
