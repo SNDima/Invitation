@@ -6,6 +6,8 @@
     eventsHub.client.sendMessage = function (message) {
         var encodedMsg = $('<div />').text(message).html();
         $('#events').append('<li>' + encodedMsg + '</li>');
+        var elem = document.getElementById('admin-div');
+        elem.scrollTop = elem.scrollHeight;
     };
 
     timer.client.showTime = function (time) {

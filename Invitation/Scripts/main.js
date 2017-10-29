@@ -119,6 +119,8 @@ function showTimerMessage() {
     $("#timer-message").show();
 }
 
+var externalStopTimer;
+
 function runTimer(secondsLeft) {
     sendMessage("Timer is started. The time left to answer: " + secondsLeft + "seconds.");
     $("#timer").text("The time left to answer: " + secondsLeft + "s");
@@ -146,8 +148,11 @@ function runTimer(secondsLeft) {
 
     function stopTimer() {
         sendMessage("Timer is stopped.");
-        window.clearInterval(timer)
+        window.clearInterval(timer);
+        showQuestionTime(0);
     }
+
+    externalStopTimer = stopTimer;
 }
 
 function disable() {

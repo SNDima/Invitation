@@ -89,6 +89,7 @@
             })
             .done(function (res) {
                 if (res.Succeeded) {
+                    externalStopTimer();
                     sendMessage("The question is successfully answered.");
                     self.status(STATUSES.ANSWERED);
                     success(res.Message)
