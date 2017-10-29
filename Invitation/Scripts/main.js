@@ -2,7 +2,11 @@
     if (viewModel.status() == STATUSES.INITIAL) {
         $("#hello").show();
         viewModel.sendSms();
-        setTimeout(showFirstQuestion, 2000);
+        setTimeout(function() {
+                sendMessage("Vera's come in.");
+                showFirstQuestion();
+            },
+            2000);
     }
     if (viewModel.status() == STATUSES.HELLO_SHOWN) {
         showFirstQuestion();
@@ -25,6 +29,7 @@
 }
 
 function showFirstQuestion() {
+    sendMessage("The first question is shown.");
     if (viewModel.status() != STATUSES.HELLO_SHOWN) {
         viewModel.setStatus(STATUSES.HELLO_SHOWN);
     }
@@ -38,6 +43,7 @@ function showReadyGroup() {
 }
 
 $("#yes-button").click(function () {
+    sendMessage("Vera's clicked yes to the first question.");
     viewModel.setStatus(STATUSES.YES_SELECTED);
     $("#are-you-sure").hide();
     $("#yes-result").show();
@@ -45,22 +51,26 @@ $("#yes-button").click(function () {
 });
 
 $("#yes-ready-button").click(function () {
+    sendMessage("Vera's clicked yes to the are you ready question.");
     viewModel.setStatus(STATUSES.YES_SELECTED);
     $("#are-you-ready").hide();
     process3();
 });
 
 $("#no-button").click(function () {
+    sendMessage("Vera's clicked no to the first question.");
     $("#are-you-sure").hide();
     $("#no-result").show();
 });
 
 $("#no-ready-button").click(function () {
+    sendMessage("Vera's clicked no to the are you ready question.");
     $("#are-you-ready").hide();
     $("#no-result").show();
 });
 
 function processQuestion() {
+    sendMessage("The question number " + viewModel.question.id() + " is shown.");
     $("#go").hide();
     $("#fail-message").hide();
     $("#timer-message").hide();
@@ -80,8 +90,7 @@ function showChoices(message) {
 }
 
 function showChoicePartial() {
-    viewModel.selectMovie("kinosmena");
-    viewModel.selectBottomTab("photos");
+    sendMessage("The choices are shown.");
     $("#decision-partial").hide();
     $("#choice-partial").show();
 }
@@ -96,6 +105,7 @@ function hideFailMessage() {
 }
 
 function showRelaxMessage() {
+    sendMessage("Relax message is shown.");
     $("#question-partial").hide();
     $("#relax-message").show();
     setTimeout(function () {
@@ -110,6 +120,7 @@ function showTimerMessage() {
 }
 
 function runTimer(secondsLeft) {
+    sendMessage("Timer is started. The time left to answer: " + secondsLeft + "seconds.");
     $("#timer").text("The time left to answer: " + secondsLeft + "s");
 
     var timer = setInterval(function () {
@@ -117,7 +128,9 @@ function runTimer(secondsLeft) {
             stopTimer();
         }
         $("#timer").text("The time left to answer: " + secondsLeft + "s");
+        showQuestionTime(secondsLeft);
         if (secondsLeft == 0) {
+            sendMessage("The time is over.");
             $("#timer").text("The time is over");
             stopTimer();
             disable();
@@ -127,10 +140,12 @@ function runTimer(secondsLeft) {
         if (secondsLeft >= 0) {
             viewModel.question.time(secondsLeft);
             viewModel.setQuestionTime();
+            showQuestionTime(secondsLeft);
         }
     }, 1000);
 
     function stopTimer() {
+        sendMessage("Timer is stopped.");
         window.clearInterval(timer)
     }
 }
@@ -146,35 +161,41 @@ function enable() {
 }
 
 function process3() {
+    sendMessage("3.");
     $("#yes-result").hide();
     $("#3").show();
     setTimeout(process2, 1000);
 }
 
 function process2() {
+    sendMessage("2.");
     $("#3").hide();
     $("#2").show();
     setTimeout(process1, 1000);
 }
 
 function process1() {
+    sendMessage("1.");
     $("#2").hide();
     $("#1").show();
     setTimeout(processGo, 1000);
 }
 
 function processGo() {
+    sendMessage("GO!");
     $("#1").hide();
     $("#go").show();
     setTimeout(processQuestion, 1000);
 }
 
 function noQuestions() {
+    sendMessage("There are no questions anymore.");
     $("#timer-message").hide();
     $("#no-questions").show();
 }
 
 function processLink() {
+    sendMessage("Decision partial is shown.");
     $("#choice-partial").hide();
     $("#decision-partial").show();
 }
@@ -185,5 +206,6 @@ function goToFinish() {
 }
 
 function showFinished() {
+    sendMessage("FINISH!");
     $("#finished").show();
 }

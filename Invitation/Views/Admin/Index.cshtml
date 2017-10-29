@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Admin";
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/admin")
+}
+
+<h1 class="admin-h1">Admin Module</h1>
+
+<div class="w3-display-middle admin-div">
+    <ul id="events" class="pt20">
+    </ul>
+</div>
+<div id="timer-div" class="w3-display-middle" style="display: none">
+    <p id="timer-p"></p>
+</div>
+
+<div class="w3-display-bottomleft w3-padding-large">
+    &copy; @DateTime.Now.Year By <a href="https://vk.com/id143134344" target="_blank">D.Sirotkin</a>
+</div>

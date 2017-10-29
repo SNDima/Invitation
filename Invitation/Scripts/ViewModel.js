@@ -79,6 +79,8 @@
     }
 
     self.answerQuestion = function (success, fail) {
+        sendMessage("Try to answer the question number " + self.question.id()
+            + ". The given answer is " + self.question.answer() + ".");
         if (self.question.time() > 0) {
             $.post(self.actions.AnswerQuestion,
             {
@@ -87,16 +89,19 @@
             })
             .done(function (res) {
                 if (res.Succeeded) {
+                    sendMessage("The question is successfully answered.");
                     self.status(STATUSES.ANSWERED);
                     success(res.Message)
                 } else {
+                    sendMessage("Wrong answer.");
                     fail(res.Message)
                 }
             });
         }
     }
 
-    self.makeDecision = function(decision) {
+    self.makeDecision = function (decision) {
+        sendMessage("The decision is made and it is " + decision + ".");
         $.post(self.actions.MakeDecision,
             {
                 decision: decision
@@ -119,8 +124,9 @@
         return true;
     };
 
-    self.selectMovie = function(next) {
+    self.selectMovie = function (next) {
         if (self.currentTab() != next) {
+            sendMessage("Next moview is selected: " + next + ".");
             $("#" + self.currentTab() + "-li").removeClass("active");
             $("#" + next + "-li").addClass("active");
             self.currentTab(next);
@@ -129,17 +135,20 @@
 
     self.selectBottomTab = function (tab) {
         if (self.currentBottomTab() != tab) {
+            sendMessage(tab + " tab is selected.");
             $("#" + self.currentBottomTab() + "-a").removeClass("bottom-active");
             $("#" + tab + "-a").addClass("bottom-active");
             self.currentBottomTab(tab);
         }
     }
 
-    self.useLink = function() {
+    self.useLink = function () {
+        sendMessage("Went to the decision page.");
         processLink();
     }
 
     self.useAnotherLink = function () {
+        sendMessage("Went back to the choices page.");
         showChoicePartial();
     }
 }

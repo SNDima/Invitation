@@ -40,6 +40,9 @@ namespace Invitation
                         "~/Scripts/ViewModel.js",
                         "~/Scripts/Statuses.js",
                         "~/Scripts/SignalR.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/admin").Include(
+                        "~/Scripts/AdminSignalR.js"));
         }
     }
 }

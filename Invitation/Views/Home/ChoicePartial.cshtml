@@ -4,9 +4,9 @@
         When you're ready please use this <a data-bind="click: useLink" style="cursor: pointer; text-decoration: underline">link</a>.
     </h1>
     <ul class="nav nav-tabs nav-justified" style="padding-top: 20px">
-        <li data-bind="click: selectMovie('kinosmena')" id="kinosmena-li" role="presentation" class="active"><a href="#">Kinosmena</a></li>
-        <li data-bind="click: selectMovie('jungle')" id="jungle-li" role="presentation"><a href="#">Джунгли</a></li>
-        <li data-bind="click: selectMovie('jigsaw')" id="jigsaw-li" role="presentation"><a href="#">Пила 8</a></li>
+        <li data-bind="click: selectMovie.bind($data, 'kinosmena')" id="kinosmena-li" role="presentation" class="active"><a href="#">Kinosmena</a></li>
+        <li data-bind="click: selectMovie.bind($data, 'jungle')" id="jungle-li" role="presentation"><a href="#">Джунгли</a></li>
+        <li data-bind="click: selectMovie.bind($data, 'jigsaw')" id="jigsaw-li" role="presentation"><a href="#">Пила 8</a></li>
     </ul>
     <!-- ko if: currentTab() == "kinosmena" -->
     <div id="kinosmena">
@@ -136,10 +136,10 @@
     </div>
     <!-- /ko -->
     <ul class="nav nav-tabs nav-justified">
-        <li data-bind="click: selectBottomTab('photos')" id="photos-li" role="presentation">
+        <li data-bind="click: selectBottomTab.bind($data, 'photos')" id="photos-li" role="presentation">
             <a id="photos-a" href="#">Photos</a>
         </li>
-        <li data-bind="click: selectBottomTab('content')" id="content-li" role="presentation">
+        <li data-bind="click: selectBottomTab.bind($data, 'content')" id="content-li" role="presentation">
             <a id="content-a" href="#">Content</a>
         </li>
     </ul>
