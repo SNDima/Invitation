@@ -59,6 +59,24 @@ namespace Repositories
                 TimeToAnswer = 45,
                 RightAnswer = "bosco",
                 CustomMessagesToAnswers = new Dictionary<string, string>()
+            },
+            new Question()
+            {
+                Id = 3,
+                Str = "This queston is very simple. Please type in Russian the last name of a professor who taught us C and C++?",
+                InitialTimeToAnswer = 30,
+                TimeToAnswer = 30,
+                RightAnswer = "белодед",
+                CustomMessagesToAnswers = new Dictionary<string, string>()
+            },
+            new Question()
+            {
+                Id = 4,
+                Str = "And this question is just the last chance to come in. I don't know what to ask... Type something?",
+                InitialTimeToAnswer = 30,
+                TimeToAnswer = 30,
+                RightAnswer = "something",
+                CustomMessagesToAnswers = new Dictionary<string, string>()
             }
         };
 
