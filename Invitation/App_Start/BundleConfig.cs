@@ -42,7 +42,8 @@ namespace Invitation
                         "~/Scripts/SignalR.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(
-                        "~/Scripts/AdminSignalR.js"));
+                        "~/Scripts/AdminSignalR.js",
+                        "~/Scripts/AdminViewModel.js"));
         }
     }
 }

@@ -4,9 +4,21 @@
 
 @section scripts {
     @Scripts.Render("~/bundles/admin")
+    <script>
+        var actions = @Html.Raw(Json.Encode(ViewBag.Actions));
+        var viewModel = new AdminViewModel(actions);
+        ko.applyBindings(viewModel);
+    </script>
 }
 
 <h1 class="admin-h1">Admin Module</h1>
+
+<div class="w3-display-middle" style="top: 20%;">
+    <button data-bind="click: enablePhone" class="button grey-button">Enable Phone</button>
+    <button data-bind="click: disablePhone" class="button grey-button">Disable Phone</button>
+    <button data-bind="click: getPhoneStatus" class="button grey-button">Phone Status</button>
+    <button data-bind="click: flush" class="button grey-button">Flush</button>
+</div>
 
 <div id="admin-div" class="w3-display-middle admin-div">
     <ul id="events" class="pt20">

@@ -87,6 +87,19 @@ textarea {
     color: white;
 }
 
+.grey-button {
+    padding: 12px 24px;
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+}
+
+.grey-button:hover {
+    background-color: #222;
+    border: 2px solid #222;
+    color: white;
+}
+
 .w100 {
     width: 100%;
 }
@@ -107,7 +120,7 @@ textarea {
 
 .admin-h1 {
     text-align: center;
-    padding-top: 80px;
+    padding-top: 50px;
 }
 
 .pt20 {

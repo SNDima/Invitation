@@ -64,39 +64,11 @@ namespace Invitation.Controllers
             return Json(_questionsService.AnswerQuestion(id, answer));
         }
 
-        [HttpGet]
-        public ActionResult Flush()
-        {
-            _questionsService.Flush();
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
-        }
-
         [HttpPost]
         public ActionResult MakeDecision(string decision)
         {
             _questionsService.MakeDecision(decision);
             return new HttpStatusCodeResult(HttpStatusCode.OK);
-        }
-
-        [HttpGet]
-        public ActionResult EnablePhone()
-        {
-            _questionsService.EnablePhone();
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
-        }
-
-        [HttpGet]
-        public ActionResult DisablePhone()
-        {
-            _questionsService.DisablePhone();
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
-        }
-
-        [HttpGet]
-        public ActionResult IsPhoneEnabled()
-        {
-            return Json(new { IsPhoneEnabled = _questionsService.IsPhoneEnabled() },
-                JsonRequestBehavior.AllowGet);
         }
     }
 }

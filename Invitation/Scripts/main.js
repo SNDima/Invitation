@@ -122,7 +122,7 @@ function showTimerMessage() {
 var externalStopTimer;
 
 function runTimer(secondsLeft) {
-    sendMessage("Timer is started. The time left to answer: " + secondsLeft + "seconds.");
+    sendMessage("Timer is started. The time left to answer: " + secondsLeft + " seconds.");
     $("#timer").text("The time left to answer: " + secondsLeft + "s");
 
     var timer = setInterval(function () {
