@@ -201,6 +201,11 @@
     <Content Include="Scripts\AdminViewModel.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\dimas.pubxml" />
+    <None Include="Properties\PublishProfiles\dsirotkin - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\dsirotkin - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
+    <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
