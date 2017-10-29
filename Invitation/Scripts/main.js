@@ -206,6 +206,7 @@ function processLink() {
 }
 
 function goToFinish() {
+    sendMessage("FINISH!");
     $("#decision-partial").hide();
     $("#after-decision").show();
 }
