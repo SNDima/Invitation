@@ -107,6 +107,10 @@
             });
     }
 
+    self.sendSms = function () {
+        $.get(self.actions.SendSms);
+    };
+
     self.onEnter = function (d, e) {
         hideFailMessage();
         if (e.keyCode === 13) {

@@ -77,5 +77,20 @@ namespace Services
         {
             StaticRepository.MakeDecision(decision);
         }
+
+        public bool IsPhoneEnabled()
+        {
+            return StaticRepository.IsPhoneEnabled;
+        }
+
+        public void EnablePhone()
+        {
+            StaticRepository.IsPhoneEnabled = true;
+        }
+
+        public void DisablePhone()
+        {
+            StaticRepository.IsPhoneEnabled = false;
+        }
     }
 }

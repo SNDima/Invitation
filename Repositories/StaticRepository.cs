@@ -69,6 +69,8 @@ namespace Repositories
 
         private static string Decision;
 
+        public static bool IsPhoneEnabled;
+
         public static void Reinit()
         {
             Status = Status.Initial;

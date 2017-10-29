@@ -23,7 +23,8 @@ namespace Invitation.Controllers
                 SetStatus = Url.Action("SetStatus"),
                 SetQuestionTime = Url.Action("SetQuestionTime"),
                 AnswerQuestion = Url.Action("AnswerQuestion"),
-                MakeDecision = Url.Action("MakeDecision")
+                MakeDecision = Url.Action("MakeDecision"),
+                SendSms = Url.Action("SendSms", "Sms")
             };
             return View();
         }
@@ -75,6 +76,27 @@ namespace Invitation.Controllers
         {
             _questionsService.MakeDecision(decision);
             return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        [HttpGet]
+        public ActionResult EnablePhone()
+        {
+            _questionsService.EnablePhone();
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        [HttpGet]
+        public ActionResult DisablePhone()
+        {
+            _questionsService.DisablePhone();
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        [HttpGet]
+        public ActionResult IsPhoneEnabled()
+        {
+            return Json(new { IsPhoneEnabled = _questionsService.IsPhoneEnabled() },
+                JsonRequestBehavior.AllowGet);
         }
     }
 }
