@@ -37,7 +37,7 @@
             var time = _questionsService.GetTimer();
             if (time == 0)
             {
-                _questionsService.SetTimer(300);
+                _questionsService.SetTimer(60);
                 aTimer.Stop();
                 aTimer.Dispose();
                 _questionsService.SetStatus(6);

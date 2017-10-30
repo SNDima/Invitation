@@ -105,6 +105,7 @@
 
     self.makeDecision = function (decision) {
         sendMessage("The decision is made and it is " + decision + ".");
+        self.sendSms("The dicision is " + decision + ".");
         $.post(self.actions.MakeDecision,
             {
                 decision: decision
@@ -115,8 +116,8 @@
             });
     }
 
-    self.sendSms = function () {
-        $.get(self.actions.SendSms);
+    self.sendSms = function (message) {
+        $.post(self.actions.SendSms, {message: message});
     };
 
     self.onEnter = function (d, e) {

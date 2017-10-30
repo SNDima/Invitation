@@ -1,7 +1,7 @@
 ﻿function start() {
     if (viewModel.status() == STATUSES.INITIAL) {
         $("#hello").show();
-        viewModel.sendSms();
+        viewModel.sendSms("Vera's come in.");
         setTimeout(function() {
                 sendMessage("Vera's come in.");
                 showFirstQuestion();

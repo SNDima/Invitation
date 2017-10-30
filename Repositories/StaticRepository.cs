@@ -82,7 +82,7 @@ namespace Repositories
 
         private static Status Status = Status.Initial;
 
-        public const int TimerValue = 300; // 5 minutes
+        public const int TimerValue = 60; // 5 minutes
         public static int Timer = TimerValue;
 
         private static string Decision;

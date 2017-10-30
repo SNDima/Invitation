@@ -16,7 +16,8 @@
             _questionsService = new QuestionsService();
         }
 
-        public ActionResult SendSms()
+        [HttpPost]
+        public ActionResult SendSms(string message)
         {
             if (_questionsService.IsPhoneEnabled())
             {
@@ -27,12 +28,12 @@
                 var to = ConfigurationManager.AppSettings["MyPhoneNumber"];
                 var from = ConfigurationManager.AppSettings["TwilioPhoneNumber"];
 
-                var message = MessageResource.Create(
+                var mes = MessageResource.Create(
                     to: to,
                     from: from,
-                    body: "Vera's come in.");
+                    body: message);
 
-                return Content(message.Sid);
+                return Content(mes.Sid);
             }
             return new ContentResult();
         }
